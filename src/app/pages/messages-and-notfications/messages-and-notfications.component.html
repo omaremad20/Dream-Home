@@ -1,0 +1,60 @@
+
+@if(userRole === 'employee') {
+  <section class="">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-6 cursor-pointer" routerLink="/messages">
+          <div class="inner innerProfile mb-4 mb-lg-0  shadow rounded rounded-4 p-3">
+            <i class="fa-solid fa-envelope   w-100 fs-1 py-3 d-flex justify-content-center"></i>
+            <h2 class="fs-4 fw-bold mb-3">{{'messagesAndNotfications.messages' | translate}}  </h2>
+            <p>{{'messagesAndNotfications.check' | translate}} </p>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 cursor-pointer" routerLink="/notifications">
+          <div class="inner innerProfile mb-4 mb-lg-0  shadow rounded rounded-4 p-3 position-relative">
+            <i class="fa-solid fa-bell   w-100 fs-1 py-3 d-flex justify-content-center"></i>
+            @if (notificationCount > 0) {
+              <div class="badge d-flex justify-content-center align-items-center bg-danger position-absolute top-0 end-0 translate-middle">
+                <span class="fw-bolder fs-5">{{ notificationCount }}</span>
+              </div>
+            }
+            <h2 class="fs-4 fw-bold mb-3">{{'messagesAndNotfications.Notfications' | translate}}  </h2>
+            <p>{{'messagesAndNotfications.accepted' | translate}}</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+}
+@else if (userRole === 'customer') {
+  <section class="">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-6 cursor-pointer" routerLink="/messages">
+          <div class="inner innerProfile mb-4 mb-lg-0 shadow rounded rounded-4 p-3">
+            <i class="fa-solid fa-envelope  w-100 fs-1 py-3 d-flex justify-content-center"></i>
+            <h2 class="fs-4 fw-bold mb-3">{{'messagesAndNotfications.check' | translate}}</h2>
+            <p>{{'messagesAndNotfications.check' | translate}}</p>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 cursor-pointer" routerLink="/notifications">
+          <div class="inner innerProfile mb-4 mb-lg-0 shadow rounded rounded-4 p-3 position-relative">
+            <i class="fa-solid fa-bell  w-100 fs-1 py-3 d-flex justify-content-center"></i>
+            @if (notificationCount > 0) {
+              <div class="badge d-flex justify-content-center align-items-center bg-danger position-absolute top-0 end-0 translate-middle">
+                <span class="fw-bolder fs-5">{{ notificationCount }}</span>
+              </div>
+            }
+            <h2 class="fs-4 fw-bold mb-3">{{'messagesAndNotfications.Notfications' | translate}}</h2>
+            <p>{{'messagesAndNotfications.acceptedWorkers' | translate}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+}
+
+

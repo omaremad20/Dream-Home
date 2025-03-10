@@ -1,0 +1,40 @@
+.RegisteritionTxt {
+  width: fit-content;
+}
+.RegisteritionTxt::after {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 3px;
+  bottom: -20%;
+  left: 0;
+}
+section {
+  margin-top: 10rem;
+  margin-bottom: 5rem;
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.modal-content {
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  animation: fadeIn 0.3s ease-in-out;
+}
+.modal-content h2 {
+  margin-bottom: 10px;
+}
+.icon-eye {
+  top: 55%;
+  cursor: pointer;
+}

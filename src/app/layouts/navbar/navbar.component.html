@@ -1,0 +1,73 @@
+<nav class="navbar navbar-expand-lg text-capitalize" [attr.data-bs-theme]="theme" appWindowScrolled>
+  <div class="container">
+    <div class="logoAndimages w-fit d-flex justify-content-center align-items-center" routerLink="dreamhome"
+      routerLinkActive="activeLinkNow">
+      <a class="navbar-brand fs-5"><i class="fa-solid fa-house"></i> {{ 'navbar.Dream' | translate }} <span
+          class="hometxt text-3xl font-bold underline">{{'navbar.Home' | translate}}</span></a>
+    </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0" #ul>
+        @if(authService.isLoggedIn()){
+        <li class="nav-item w-fit ">
+          <a class="nav-link homeLink" aria-current="page" routerLink="dreamhome" routerLinkActive="activeLinkNow">{{
+            'navbar.home' | translate }}</a>
+        </li>
+        }
+        @if(authService.isLoggedIn()){
+        <li class="nav-item w-fit">
+          <a class="nav-link servicelink mx-2 text-capitalize" routerLink="{{authService.getRole() === 'employee' ? '/browse-projects' : '/services' }}" routerLinkActive="activeLinkNow"
+            aria-current="page">  {{ authService.getRole() === 'employee' ?  ('navbar.browseprojects' | translate) : ('navbar.services' | translate) }}</a>
+        </li>
+        }
+        @if(authService.isLoggedIn()){
+        <li class="nav-item w-fit">
+          <a class="nav-link aboutLink">{{ 'navbar.about' | translate }}</a>
+        </li>
+        }
+        @if(authService.isLoggedIn()){
+        <li class="nav-item w-fit">
+          <a class="nav-link mx-2 contactusLink">{{ 'navbar.contact' | translate }}</a>
+        </li>
+        }
+      </ul>
+      @if(isServicesPage()) {
+      <div class="d-flex ms-0 mx-lg-1 mb-3 mb-lg-0" role="search">
+        <input class="form-control me-2" type="search" [placeholder]=" 'navbar.searchPlaceHolder' | translate " aria-label="Search"
+          (input)="onSearch($event)">
+      </div>
+      }
+      <div class=" d-flex justify-content-between  align-items-center options-ul">
+      <button class="py-2 btn rounded  px-4" (click)="changeLanguage()">{{ 'navbar.language' | translate }}</button>
+      @if(authService.isLoggedIn()){
+      <i class="fa-solid fa-user fs-4  cursor-pointer" routerLink="/my-profile"></i>
+      }
+      <button class="darkBtn " (click)="toggleTheme()">
+        @if (theme === 'light') {
+        <span><i class="fa-solid fa-moon fs-4  text-black cursor-pointer"></i> </span>
+        }
+        @if(theme === 'dark') {
+        <i class="fa-regular fa-moon fs-4  text-white cursor-pointer"></i>
+        }
+      </button>
+    </div>
+      <ul class="d-flex justify-content-center align-items-center mb-0">
+        @if(!authService.isLoggedIn()){
+        <li class="">
+          <a class="nav-link spcial-nav-link w-fit mx-2 contactusLink" routerLink="/login"
+            routerLinkActive="activeLinkNow">{{ 'navbar.login' | translate }}</a>
+        </li>
+        }
+        @if(!authService.isLoggedIn()){
+        <li class="">
+          <a class="nav-link w-fit spcial-nav-link mx-2 contactusLink" routerLink="/register"
+            routerLinkActive="activeLinkNow">{{ 'navbar.register' | translate }}</a>
+        </li>
+        }
+      </ul>
+    </div>
+  </div>
+</nav>

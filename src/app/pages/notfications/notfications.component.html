@@ -1,0 +1,171 @@
+@if(userRole === 'customer'){
+  @if(isNotfaied) {
+    <section>
+      <h1 class="text-center anmieWord fw-bolder my-5">{{'notifications.yourNotifications' | translate}} </h1>
+      <div class="container">
+        <div class="row">
+          @for (notfi of NotficationsRes; track notfi._id) {
+            <div class="col-12">
+              <div class="inner mb-3 d-flex flex-column p-4 rounded rounded-4">
+              @if (currentLang === 'en') {
+                <p class="text-center"><span class="fw-bolder ">  {{'notifications.notification' | translate }} </span>  <span class="text-danger fw-bolder"> : {{notfi.message.split(',').splice(0 , 1).join()}}</span>  </p>
+              }@else if (currentLang === 'ar') {
+                <p class="text-center"><span class="fw-bolder ">  {{'notifications.notification' | translate }} </span>  <span class="text-danger fw-bolder">: أحد الموظفين طلب مراجعتك. </span>  </p>
+              }
+              <div class="inner flex-column flex-md-row d-flex justify-content-between">
+                <div class="d-flex flex-column">
+                  <p> <span class="fw-bolder"> {{'notifications.employeeName' |  translate }} </span> {{notfi.message.split(',').slice(2 , 3).join()}}</p>
+                  <div class="w-100  d-flex align-items-center">
+                    <p class="mb-0"><i class="fa-solid fa-calendar-days"></i> <span class="fw-bolder"> {{'notifications.day' | translate }} </span>  {{notfi.createdAt.split('').slice(0 , 10).join('')}} </p>
+                    <p class="mx-2 mb-0"> | </p>
+                    @if (currentLang === 'en') {
+                      <p class="d-block text-end opacity-75 mb-0">
+                        @if (+notfi.createdAt.split('').slice(11 , 13).join('') + 2 >= 12) {
+                          {{+notfi.createdAt.split('').slice(11 , 13).join('') + 2 - 12 }}:{{notfi.createdAt.split('').slice(14 , 16).join('')}} PM
+                        }@else if (+notfi.createdAt.split('').slice(11 , 13).join('') + 2 < 12) {
+                          {{+notfi.createdAt.split('').slice(11 , 13).join('') + 2 }}:{{notfi.createdAt.split('').slice(14 , 16).join('')}} AM
+                        }
+                      </p>
+                    }@else if (currentLang === 'ar') {
+                      <p class="d-block text-end opacity-75 mb-0">
+                        @if (+notfi.createdAt.split('').slice(11 , 13).join('') + 2 >= 12) {
+                          {{+notfi.createdAt.split('').slice(11 , 13).join('') + 2 - 12 }}:{{notfi.createdAt.split('').slice(14 , 16).join('')}} مساءا
+                        }@else if (+notfi.createdAt.split('').slice(11 , 13).join('') + 2 < 12) {
+                          {{+notfi.createdAt.split('').slice(11 , 13).join('') + 2 }}:{{notfi.createdAt.split('').slice(14 , 16).join('')}} صباحا
+                        }
+                      </p>
+                    }
+                  </div>
+                </div>
+                <div>
+                  <div class="d-flex d-md-block mt-3 mt-md-0 justify-content-between">
+                    <button class="btn mx-2 decBtn align-self-center" (click)="deleteNotification(notfi._id)">
+                      {{'notifications.delete' | translate }}<i class="fa-solid mx-1 fa-trash"></i>
+                    </button>
+                    <button class="btn accBtn" (click)="openReviewModal(notfi)"> {{'notifications.accept' | translate }} <i class="fa-regular fa-circle-check"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+          }
+        </div>
+      </div>
+  <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content inner modal-sumbtion">
+        <div class="modal-header">
+          <h5 class="modal-title" id="reviewModalLabel">{{'notifications.submitYourReview' | translate }}</h5>
+        </div>
+        <div class="modal-body">
+          <label for="reviewText" class="mb-2"> {{'notifications.comment' | translate }} </label>
+          <textarea [(ngModel)]="review" id="reviewText" class="form-control text-note"></textarea>
+          <label for="rating" class="my-2"> {{'notifications.rating' | translate }} </label>
+          <input type="number" [(ngModel)]="rating" id="rating" class="form-control" placeholder="Enter rating" min="1" max="5" />
+        </div>
+        <div class="modal-footer d-flex justify-content-between">
+          <button type="button" class="btn " data-bs-dismiss="modal">{{'notifications.close' | translate }}</button>
+          <button type="button" class="btn " (click)="submitReview()">{{ 'notifications.send' | translate }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content inner modal-sumbtion ">
+        <div class="modal-header">
+          <h5 class="modal-title" id="successModalLabel"> {{'notifications.success' | translate}} </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p class="mb-0 d-flex justify-content-center align-items-center">
+            {{'notifications.reviewSubmitted' | translate}}
+            <i class="fa-solid fa-circle-check "></i>
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">{{'notifications.ok' | translate}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    </section>
+  } @else {
+    <div class="vh-100 d-flex justify-content-center align-items-center">
+      <div class="w-50 text-center  alert-danger alert">
+        <p class="mb-0"> {{'notifications.noNotifications' | translate}} <i class="fa-regular fa-face-frown-open"></i> </p>
+      </div>
+    </div>
+  }
+}
+@else if (userRole === 'employee') {
+  @if(isNotfaied) {
+    <section>
+      <h1 class="text-center anmieWord fw-bolder my-5">{{'notifications.yourNotifications' | translate}}</h1>
+      <div class="container">
+        <div class="row">
+          @for (notfi of NotficationsRes; track notfi._id) {
+            <div class="col-12">
+              <div class="inner mb-3 d-flex flex-column p-4 rounded rounded-4">
+                @if (notfi.message.split(',').slice(0 , 1).join('').includes('An')) {
+                  @if (currentLang === 'en') {
+                    <p class="text-center"><span class="fw-bolder ">   {{'notifications.notification' | translate}} : </span>  <span class="text-success"> {{notfi.message.split(',').splice(0 , 1).join()}} <i class="fa-solid text-success fa-circle-check"></i> </span></p>
+                  }@else if (currentLang === 'ar') {
+                    <p class="text-center"><span class="fw-bolder ">   {{'notifications.notification' | translate}} : </span>  <span class="text-success">قبل أحد العملاء طلب المراجعة الخاص بك بنجاح. <i class="fa-solid text-success fa-circle-check"></i> </span></p>
+                  }
+                }@else {
+                  @if (currentLang === 'en') {
+                    <p class="text-center"><span class="fw-bolder ">  {{'notifications.notification' | translate}} : </span>  <span class="text-danger"> {{notfi.message.split(',').splice(0 , 1).join()}}  </span></p>
+                  }@else if (currentLang === 'ar') {
+                    <p class="text-center"><span class="fw-bolder ">   {{'notifications.notification' | translate}} : </span>  <span class="text-danger"> لقد أرسلت طلب مراجعة إلى العميل. </span></p>
+                  }
+                }
+              <div class="inner d-flex flex-column flex-md-row justify-content-between">
+                <div class="d-flex flex-column">
+                  @if (notfi.message.split(',').slice(0 , 1).join('').includes('An')) {
+                    <p> <span class="fw-bolder"> {{'notifications.customerName' | translate}} :  </span> {{notfi.message.split(',').slice(3 , 4).join()}}</p>
+                    <p> <span class="fw-bolder"> {{'notifications.rate' | translate}} : </span> {{notfi.message.split(',').slice(1 , 2).join()}}</p>
+                    <p> <span class="fw-bolder"> {{'notifications.comment' | translate}} :  </span> {{notfi.message.split(',').slice(2 , 3).join()}}</p>
+                  }@else {
+                    <p> <span class="fw-bolder"> {{'notifications.customerName' | translate}} : </span> {{notfi.message.split(',').splice(2 , 3).join()}}</p>
+                  }
+                  <div class="w-100  d-flex align-items-center">
+                    <p class="mb-0"><i class="fa-solid fa-calendar-days"></i> <span class="fw-bolder"> {{'notifications.day' | translate}} </span>  {{notfi.createdAt.split('').slice(0 , 10).join('')}} </p>
+                    <p class="mx-2 mb-0"> | </p>
+                    @if (currentLang === 'en') {
+                      <p class="d-block text-end opacity-75 mb-0">
+                        @if (+notfi.createdAt.split('').slice(11 , 13).join('') + 2 >= 12) {
+                          {{+notfi.createdAt.split('').slice(11 , 13).join('') + 2 - 12 }}:{{notfi.createdAt.split('').slice(14 , 16).join('')}} PM
+                        }@else if (+notfi.createdAt.split('').slice(11 , 13).join('') + 2 < 12) {
+                          {{+notfi.createdAt.split('').slice(11 , 13).join('') + 2 }}:{{notfi.createdAt.split('').slice(14 , 16).join('')}} AM
+                        }
+                      </p>
+                    }@else if (currentLang === 'ar') {
+                      <p class="d-block text-end opacity-75 mb-0">
+                        @if (+notfi.createdAt.split('').slice(11 , 13).join('') + 2 >= 12) {
+                          {{+notfi.createdAt.split('').slice(11 , 13).join('') + 2 - 12 }}:{{notfi.createdAt.split('').slice(14 , 16).join('')}} مساءا
+                        }@else if (+notfi.createdAt.split('').slice(11 , 13).join('') + 2 < 12) {
+                          {{+notfi.createdAt.split('').slice(11 , 13).join('') + 2 }}:{{notfi.createdAt.split('').slice(14 , 16).join('')}} صباحا
+                        }
+                      </p>
+                    }
+                  </div>
+                </div>
+                <button class="btn mt-3 mt-md-0 decBtn align-self-center" (click)="deleteNotification(notfi._id)">
+                  {{'notifications.delete' | translate}} <i class="fa-solid fa-trash"></i>
+                </button>
+              </div>
+            </div>
+            </div>
+          }
+        </div>
+      </div>
+    </section>
+  } @else {
+    <div class="vh-100 d-flex justify-content-center align-items-center">
+      <div class="w-50 text-center  alert-danger alert">
+        <p class="mb-0">{{'notifications.noNotifications' | translate}} <i class="fa-regular fa-face-frown-open"></i> </p>
+      </div>
+    </div>
+  }
+}

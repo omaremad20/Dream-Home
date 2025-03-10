@@ -1,0 +1,20 @@
+
+
+@if(authService.getRole() === 'customer'){
+  <app-home ></app-home>
+  <app-services ></app-services>
+  <app-contact-us></app-contact-us>
+  <app-aboutus></app-aboutus>
+}@else if(authService.getRole() === 'employee'){
+  <app-my-profile></app-my-profile>
+  <app-contact-us></app-contact-us>
+  <app-aboutus></app-aboutus>
+}
+<hr #elx class="my-0"/>
+
+
+
+<hr #elTwo class="my-0"/>
+
+
+

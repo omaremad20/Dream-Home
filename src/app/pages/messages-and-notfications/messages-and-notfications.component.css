@@ -1,0 +1,17 @@
+section {
+  margin-top: 10rem;
+  margin-bottom: 5rem;
+  /* min-height: 100vh; */
+
+}
+.badge {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 2rem;
+  font-weight: bold;
+}
+/* .inner {
+  min-height: 100%;
+} */

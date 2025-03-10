@@ -1,0 +1,20 @@
+section {
+  margin-top: 10rem;
+  margin-bottom: 4.8125rem;
+}
+.logoutBtn {
+  all: unset;
+  flex: 0 0 auto;
+  width: 98.25%;
+  margin: auto;
+  cursor: pointer;
+  background-color: unset !important;
+  margin-inline: auto !important;
+}
+div .modal-content.modal-settings {
+  width: 100% !important;
+}
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
+}

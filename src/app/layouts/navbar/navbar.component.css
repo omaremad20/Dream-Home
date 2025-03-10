@@ -1,0 +1,85 @@
+i.toDark {
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+button.editingButtonsFormNavR {
+  all: unset;
+  color: rgb(108, 117, 125);
+  line-height: 1.75rem;
+  padding-inline: 2rem;
+  padding-block: 0.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  border: solid 3px transparent;
+}
+
+button.editingButtonsFormNavL {
+  all: unset;
+  line-height: 1.75rem;
+  padding-inline: 2rem;
+  padding-block: 0.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  border: solid 3px transparent;
+}
+.w-fit {
+  width: fit-content;
+}
+i.toDark {
+  border: solid transparent 3px;
+  padding: 0.625rem;
+  border-radius: 0.5rem;
+}
+div.logo {
+  width: 25%;
+}
+.hometxt {
+  font-weight: bolder;
+}
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 3px;
+  left: 0%;
+  bottom: 0%;
+  transition: ease-in-out width 0.3s;
+}
+.activeLinkNow::after {
+  width: 100% !important;
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+.activeLinkNow {
+ font-weight: bold !important;
+}
+.spcial-nav-link:hover::after {
+  width: 100%;
+}
+.spcial-nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 3px;
+  left: 0%;
+  bottom: -30%;
+  transition: ease-in-out width 0.3s;
+}
+nav {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+}
+.darkBtn {
+  all: unset !important;
+  cursor: pointer;
+}
+.cursor-pointer {
+  cursor: pointer !important;
+}

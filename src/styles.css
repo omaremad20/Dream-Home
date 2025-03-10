@@ -1,0 +1,303 @@
+/* global */
+@import url("https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@300&display=swap");
+.right-2 {
+  right : 2.5% !important ;
+}
+.left-2 {
+  left: 2.5% !important;
+}
+body {
+  font-family: var(--app-font-family) !important;
+  letter-spacing: 1px;
+  font-weight: 400;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+:root {
+  --app-font-family: "Encode Sans Expanded", sans-serif ;
+}
+/* dark and light mode */
+[data-bs-theme="light"] {
+  /* all: unset !important; */
+  --bs-primary: unset !important;
+  --bs-secondary: unset !important;
+  --bs-body-bg: unset !important;
+  --bs-body-color: unset !important;
+  --bs-navbar-bg: unset !important;
+  --bs-text-color: #000 !important;
+  --bs-after-underline : #FAC600 !important ;
+  --bs-buttonsAndIcons-bgColor: #FED754 !important;
+  --bs-divs-first-bg-color: #F5ECD5 !important;
+  --bs-divs-seconed-bg-color: #FFFFFF !important;
+  --bs-divs-third-bg-color: #F5ECD5 !important;
+  --bs-first-other: rgba(0, 0, 0, 0.7) !important;
+  --bs-second-other: #F5C242 !important;
+  --bs-third-other: #FFD65A !important;
+  --bs-fourth-other: rgba(0, 0, 0, 0.5) !important;
+  --bs-nav-bg-color: #F7F7F7 !important;
+  --bs-body-color: #FFFAEC  !important;
+  --bs-loginForm-bg: #FFFAEC  !important;
+  --bs-light-dark-bg : #161a28 !important;
+  --bs-dark-btn-color : #000 ;
+  --bs-middle-text-color : #2C3930  !important;
+  /* --bs-chat-sender: #202022 ; */
+}
+[data-bs-theme="dark"] {
+  /* --bs-chat-sender : #161a28 !important; */
+  --bs-primary: unset;
+  --bs-secondary: unset;
+  --bs-body-bg: unset;
+  --bs-body-color: unset;
+  --bs-navbar-bg: unset;
+  --bs-text-color: #fff  !important;
+  --bs-buttonsAndIcons-bgColor: #0052AD  !important;
+  --bs-divs-first-bg-color: #181A1B  !important;
+  --bs-divs-seconed-bg-color: #1E2021  !important;
+  --bs-first-other: #4A90E2  !important;
+  --bs-second-other: #2F73C2  !important;
+  --bs-after-underline : #2F73C2 !important ;
+  --bs-third-other: rgba(0, 82, 173, 0.5)  !important;
+  --bs-fourth-other: rgba(0, 82, 173, 0.7)  !important;
+  --bs-nav-bg-color: rgba(0 , 0 , 0 , 0.9)  !important;
+  --bs-body-color: #1E2021   !important;
+  --bs-loginForm-bg : #1E2021 !important ;
+  --bs-light-dark-bg :#E9E5D7 !important;
+  --bs-middle-text-color :  #DCD7C9  !important;
+
+}
+.text-note {
+  color: var(--bs-middle-text-color) !important;
+  transition: ease-in-out 0.3s color  !important;
+}
+.sender-bg {
+  background-color: var(--bs-buttonsAndIcons-bgColor) !important;
+  transition: ease-in-out 0.3s background-color;
+}
+.reciver-bg {
+  background-color: var(--bs-divs-first-bg-color) !important;
+  transition: ease-in-out 0.3s background-color !important;
+}
+.icons-footer {
+  cursor: pointer;
+  transition: ease-in-out color 0.3s !important;
+}
+.icons-footer:hover {
+  color: rgb(90, 87, 87) !important;
+}
+.main-section-form {
+  background-color: var(--bs-divs-first-bg-color) !important;
+  transition: ease-in-out background-color 0.3s !important;
+}
+.inner , .loader{
+  background-color: var(--bs-divs-first-bg-color) !important;
+  transition: all ease-in-out 0.3s !important;
+}
+footer , .main-text-area {
+  background-color: var(--bs-divs-first-bg-color);
+  transition: ease-in-out all 0.3s;
+}
+.form-control {
+  border: 1px solid var(--bs-buttonsAndIcons-bgColor) !important;
+  transition: box-shadow 0.3s ease-in-out !important;
+}
+.form-control:focus {
+  box-shadow: 0px 0px 0px 5px var(--bs-fourth-other) !important;
+  border-color: var(--bs-second-other) !important;
+  outline: none !important;
+}
+.touch-icons , .txt-touch{
+  color: var(--bs-text-color) !important;
+  transition: ease-in-out 0.3s color !important;
+}
+.form-select {
+  border: 1px solid var(--bs-buttonsAndIcons-bgColor) !important;
+  transition: box-shadow 0.3s ease-in-out !important;
+}
+.Services , .aboutus {
+  background-color: var(--bs-body-color) !important;
+}
+.form-select:focus {
+  box-shadow: 0px 0px 0px 5px var(--bs-fourth-other) !important;
+  border-color: var(--bs-second-other) !important;
+  outline: none !important;
+}
+.formDarkNdlight {
+  background-color: var(--bs-loginForm-bg) !important;
+  transition: ease-in-out 0.3s background-color !important;
+}
+body {
+  background-color: var(--bs-body-color) !important;
+  transition: ease-in-out 0.3s background-color !important;
+}
+input {
+  color: var(--bs-text-color) !important;
+  background-color: var(--bs-divs-first-bg-color);
+  transition: ease-in-out 0.3s all;
+}
+.navbar-brand , label , a, h1, h2, h3, h4, h5, h6, p ,textarea , i , option , select {
+  color: var(--bs-text-color) !important;
+  transition: ease-in-out 0.3s all !important;
+}
+.spinner {
+  border-color: var(--bs-text-color);
+  border-top-color: var(--bs-second-other) !important;
+  transition: all ease-in-out 0.3s !important;
+}
+button , .sendBtn {
+  color: var(--bs-text-color) !important;
+  background-color: var(--bs-buttonsAndIcons-bgColor) !important;
+  transition: ease-in-out 0.3s background-color, ease-in-out 0.3s color !important;
+}
+.warningNote {
+  color: var(--bs-buttonsAndIcons-bgColor) !important;
+  transition: ease-in-out 0.3s background-color !important;
+}
+nav {
+  background-color: var(--bs-nav-bg-color);
+  transition: ease-in-out 0.3s background-color !important;
+  transition: background-color 0.3s ease-in-out, padding-block 0.3s ease-in-out !important;
+}
+ul {
+  text-decoration: none !important;
+  list-style: none !important;
+}
+.w-fit {
+  width: fit-content;
+}
+a {
+  cursor: pointer;
+}
+.nav-link::after , .RegisteritionTxt::after , .servicesText::after , .inner::after {
+  background-color: var(--bs-after-underline) !important;
+  transition: ease-in-out 0.3s all !important;
+}
+a.iconsLinkFooter{
+  color: var(--bs-text-color) !important;
+}
+i.icon-process {
+  box-shadow: 0px 0px 0px 0.6rem var(--bs-second-other);
+}
+.innersIcons:hover i.icon-process
+{
+  box-shadow: 0px 0px 0px 0.6rem var(--bs-light-dark-bg);
+  background-color: var(--bs-second-other) ;
+}
+.cursor-pointer {
+  cursor: pointer !important;
+}
+i.fa-briefcase {
+  color: var(--bs-text-color) !important;
+  transition: ease-in-out color 0.3s !important;
+}
+/* media query */
+/* Extra small devices (portrait phones) */
+@media (max-width: 575.98px) {
+  li.nav-item {
+    all: unset !important;
+    width: 100% !important;
+    text-align: center !important ;
+    border: solid var(--bs-light-dark-bg) 1px !important;
+    margin-block: 0.25rem !important;
+    border-radius: 0.25rem !important;
+  }
+  a.nav-link::after {
+    all: unset !important;
+  }
+  a.nav-link::after {
+    all: unset !important;
+  }
+  .icons {
+    width: unset !important;
+    width: 100% !important;
+    justify-content: center !important;
+  }
+  .parentImageInProfile {
+    width: 50% !important;
+  }
+  div.service-details {
+    width: 100% !important;
+  }
+  .errorMessages {
+    font-size: 0.65rem !important;
+  }
+  p.haveAcc {
+    font-size: 0.75rem !important;
+  }
+  .logBtn {
+    width: 100% !important;
+  }
+  .RegisteritionTxt {
+    font-size: 1.2rem !important;
+  }
+}
+/* Small devices (landscape phones) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  li.nav-item {
+    all: unset !important;
+    width: 100% !important;
+    text-align: center !important ;
+    border: solid var(--bs-light-dark-bg) 1px !important;
+    margin-block: 0.25rem !important;
+    border-radius: 0.25rem !important;
+  }
+  .errorMessages {
+    font-size: 0.25rem !important;
+  }
+  div.modal-content {
+    width: 100% !important;
+  }
+}
+/* Medium devices (tablets) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  li.nav-item {
+    all: unset !important;
+    width: 100% !important;
+    text-align: center !important ;
+    border: solid var(--bs-light-dark-bg) 1px !important;
+    margin-block: 0.25rem !important;
+    border-radius: 0.25rem !important;
+  }
+  a.nav-link::after {
+    all: unset !important;
+  }
+  div.modal-content {
+    width: 100% !important;
+  }
+}
+/* Large devices (desktops) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .options-ul {
+    width: 25% !important;
+  }
+  .innerProfile {
+    min-height: 100% !important;
+  }
+  div.modal-content {
+    width: 50% !important;
+  }
+}
+/* Extra large devices (large desktops) */
+@media (min-width: 1200px) and (max-width: 1399.98px) {
+  .options-ul {
+    width: 25% !important;
+  }
+  .innerProfile {
+    min-height: 100% !important;
+  }
+  div.modal-content {
+    width: 50% !important;
+    margin-inline: auto !important;
+  }
+}
+/* Extra extra large devices (larger desktops) */
+@media (min-width: 1400px) {
+  .options-ul {
+    width: 25% !important;
+  }
+  .innerProfile {
+    min-height: 100% !important;
+  }
+  div.modal-content {
+    width: 50% !important;
+  }
+}

@@ -1,0 +1,55 @@
+div.bg-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(./../../../../public/images/background.webp);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+}
+.btnService button {
+  all: unset;
+  border: solid 1px black;
+  border-radius: 50rem;
+  padding-block: 1rem;
+  padding-inline: 0.5rem;
+  color: #fff;
+  animation-name: move;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.btnService {
+  position: absolute;
+  bottom: 10%;
+}
+
+.anmation-word {
+  animation-name: move;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes move {
+  0% {
+      transform: translateY(-10px);
+  }
+
+  100% {
+      transform: translateY(10px);
+  }
+}
+.anmieTxt::after {
+  position: absolute;
+  content: '';
+  animation-name: word;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  /* background-color: red; */
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%);
+}
+@keyframes word{0%{content:""}1.785%{content:"F"}3.57%{content:"Fi"}5.355%{content:"Fix"}7.14%{content:"Fix "}8.925%{content:"Fix E"}10.71%{content:"Fix Ev"}12.495%{content:"Fix Eve"}14.28%{content:"Fix Ever"}16.065%{content:"Fix Every"}17.85%{content:"Fix Every "}19.635%{content:"Fix Every T"}21.42%{content:"Fix Every Th"}23.205%{content:"Fix Every Thi"}24.99%{content:"Fix Every Thin"}26.775%{content:"Fix Every Thing"}28.56%{content:"Fix Every Thing "}30.345%{content:"Fix Every Thing I"}32.13%{content:"Fix Every Thing In"}33.915%{content:"Fix Every Thing In "}35.7%{content:"Fix Every Thing In Y"}37.485%{content:"Fix Every Thing In Yo"}39.27%{content:"Fix Every Thing In You"}41.055%{content:"Fix Every Thing In Your"}42.84%{content:"Fix Every Thing In Your "}44.625%{content:"Fix Every Thing In Your H"}46.41%{content:"Fix Every Thing In Your Ho"}48.195%{content:"Fix Every Thing In Your Hom"}49.98%{content:"Fix Every Thing In Your Home"}51.765%{content:"Fix Every Thing In Your Hom"}53.55%{content:"Fix Every Thing In Your Ho"}55.335%{content:"Fix Every Thing In Your H"}57.12%{content:"Fix Every Thing In Your "}58.905%{content:"Fix Every Thing In Your"}60.69%{content:"Fix Every Thing In You"}62.475%{content:"Fix Every Thing In Yo"}64.26%{content:"Fix Every Thing Y"}66.045%{content:"Fix Every Thing "}67.83%{content:"Fix Every Thin"}69.615%{content:"Fix Every Thi"}71.4%{content:"Fix Every Th"}73.185%{content:"Fix Every T"}74.97%{content:"Fix Every T"}76.755%{content:"Fix Every "}78.54%{content:"Fix Every"}80.33%{content:"Fix Ever"}82%{content:"Fix Eve"}83.33%{content:"Fix Ev"}85%{content:"Fix E"}86.33%{content:"Fix "}88%{content:"Fix "}90%{content:"Fix"}91.33%{content:"Fix"}93%{content:"Fi"}95%{content:"Fi"}96%{content:"F"}97.33%{content:"F"}99%{content:""}100%{content:""}}

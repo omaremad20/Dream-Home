@@ -1,0 +1,85 @@
+@if (isLoading) {
+<div class="loader">
+  <div class="spinner"></div>
+</div>
+}
+@else {
+@if (showNoChatsDiv) {
+<div class="text-center vh-100 d-flex justify-content-center align-items-center">
+  <p class="alert alert-danger w-75">{{'chatMessages.noChats' | translate}}<i class="fa-regular fa-face-frown-open"></i></p>
+</div>
+} @else {
+<section>
+  <h1 class="anmieWord fw-bold pb-4 text-center">{{'chatMessages.allChats' | translate}}</h1>
+  <div class="container">
+    <div class="row">
+      @for (item of AllChats ; track $index) {
+      @if (userRole === 'customer') {
+      <div class="col-12">
+        <div class="inner my-3 shadow d-flex flex-column flex-md-row container py-4 rounded-4 justify-content-between">
+        <div  (click)="openEmployeeProfile(item.user2._id)">
+          <div>
+            <h4 class="fw-bold px-2">{{'chatMessages.senderWorker' | translate}}</h4>
+            <h5 class="px-5">{{item.user2.email}}</h5>
+          </div>
+          <div class="d-flex  px-5 align-items-center justify-content-between">
+          </div>
+        </div>
+        <div class="d-flex px-5  align-items-center justify-content-center">
+        <button [routerLink]="['/chat', item.user2._id]"
+          class="btn d-flex mt-1 py-2 mt-md-0 justify-content-between align-items-center">
+          <span class="me-1">{{'chatMessages.sendMessage' | translate}}</span>
+          <i class="fa-solid fa-message mx-1"></i>
+        </button>
+      </div>
+      </div>
+      </div>
+      } @else if (userRole === 'employee') {
+      <div class="col-12">
+        <!-- +flex-column -->
+        <div class="inner flex-column my-3 shadow d-flex container py-4 rounded-4 justify-content-between">
+          <div>
+            <h4 class="fw-bold px-2">{{'chatMessages.senderCustomer' | translate}}</h4>
+            <div class="d-flex  flex-column">
+              <h5 class="px-5">{{item.user1.email}}</h5>
+              <button type="button" class="btnReview w-fit px-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                @if(!customersNO.includes(item.user1._id)) {
+                  <span class="text-center fw-bolder innerBtn position-relative" (click)="sendReviewRequest(item.user1._id)">{{'chatMessages.makeReviewRequest' | translate}}</span>
+                }
+              </button>
+            </div>
+            <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content text-center inner modal-sumbtion">
+                  <div class="modal-body py-4">
+                    <p class="mb-0 d-flex justify-content-center align-items-center">
+                      <span class="me-1 text-capitalize">
+                        {{'chatMessages.reviewRequestSent' | translate}}
+                      </span>
+                      <i class="fa-regular text-success fa-circle-check"></i>
+                    </p>
+                  </div>
+                  <div class="modal-footer d-flex justify-content-center">
+                    <button type="button" class="btn btn-success px-4"  data-bs-dismiss="modal">Okay</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- replace justify-content-between to center -->
+          <div class="d-flex px-5  align-items-center justify-content-center">
+            <button [routerLink]="['/main-chat', item.user1._id]"
+              class="btn d-flex justify-content-between align-items-center">
+              <span class="me-1">{{'chatMessages.sendMessage' | translate}}</span>
+              <i class="fa-solid fa-message mx-1"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      }
+      }
+    </div>
+  </div>
+</section>
+}
+}

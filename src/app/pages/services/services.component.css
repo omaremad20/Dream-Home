@@ -1,0 +1,68 @@
+.inner {
+    cursor: pointer;
+    /* background-color: #FFFFFF; */
+}
+
+button.fixbtn {
+    all: unset;
+    background-color: #FAC600;
+    border: transparent solid 3px;
+    border-radius: 50rem;
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+    transition: ease-in-out 0.3s color, ease-in-out 0.3s border, ease-in-out 0.3s background-color;
+}
+.inner {
+
+    position: relative;
+}
+
+.inner::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    /* background-color: var(--after-bg-color); */
+    height: 0px;
+    transition: ease-in-out 0.3s height;
+}
+
+
+
+.inner {
+    transition: ease-in-out 0.3s transform;
+}
+
+.inner:hover {
+    transform: translatey(-10px);
+}
+
+.inner:hover::after {
+    height: 10px;
+
+}
+.servicesText {
+    cursor: pointer;
+    /* --after-bg-color : #FFD65A ; */
+    margin-block: 2rem;
+}
+.servicesText::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -10%;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 5px;
+    /* background-color: var(--after-bg-color); */
+    transition: ease-in-out 0.3s width;
+
+}
+.servicesText:hover::after {
+    width: 100%;
+}
+.Services {
+    /* background-color: #FFFAEC ; */
+    padding-block: 5rem;
+}

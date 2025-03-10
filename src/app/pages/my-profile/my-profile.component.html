@@ -1,0 +1,101 @@
+@if (isLoading === true) {
+  <div  class="loader">
+    <div class="spinner"></div>
+  </div>
+}
+@else if (isLoading === false) {
+  @if(userRole === 'customer') {
+    <section class="">
+      <h1 class="fw-bold pb-4 text-center text-capitalize anmieWord"> {{'myprofile.welcomeMessage' | translate}} <span class="anmieWord">{{userName}}</span> </h1>
+      <div class="container">
+        <h2 class="fw-medium pb-2 text-capitalize position-relative RegisteritionTxt"> {{'myprofile.yourDashboard' | translate}} </h2>
+        <div class="row my-4">
+          <div class="col-12 text-capitalize  col-md-6 col-lg-4 cursor-pointer" routerLink="/upload-post">
+            <div class="inner innerProfile mb-4 mb-lg-0  shadow  rounded rounded-4 p-3 ">
+              <i class="fa-solid fa-upload   w-100 fs-1 py-3 d-flex justify-content-center"></i>
+              <h2 class="fs-4 fw-bold mb-3" >{{'myprofile.uploadPost.title' | translate}}  </h2>
+              <p> {{'myprofile.uploadPost.description' | translate}} </p>
+              <div class="d-flex  justify-content-center align-items-center">
+                <i class="fa-solid  me-2 fa-circle warningNote align-self-stretch mt-1 fs-6"></i>
+                <p class="text-note"> <span class="fw-bold">{{'myprofile.uploadPost.noteTitle' | translate}}  </span>  <span> {{'myprofile.uploadPost.noteContent' | translate}}</span></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 text-capitalize col-md-6  col-lg-4 cursor-pointer" routerLink="/MsgsAndNotfi">
+            <div class="inner innerProfile mb-4 mb-lg-0  shadow rounded rounded-4 p-3">
+              <i class="fa-solid fa-envelope  w-100 fs-1 py-3 d-flex justify-content-center"></i>
+              <h2 class="fs-4 fw-bold mb-3">{{ 'myprofile.messagesAndNotifications.title' | translate }}</h2>
+              <p> {{ 'myprofile.messagesAndNotifications.description' | translate }}</p>
+              <div class="d-flex  justify-content-center align-items-center">
+                <i class="fa-solid  me-2 fa-circle warningNote align-self-stretch mt-1 fs-6"></i>
+                <p class="text-note"> <span class="fw-bold">{{ 'myprofile.messagesAndNotifications.noteTitle' | translate }}</span>{{ 'myprofile.messagesAndNotifications.noteContent' | translate }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 text-capitalize col-md-6  col-lg-4 cursor-pointer" routerLink="/settings">
+            <div class="inner innerProfile mb-4 mb-lg-0 shadow rounded  mt-0 rounded-4 p-3">
+              <i class="fa-solid fa-gear   w-100 fs-1 py-3 d-flex justify-content-center"></i>
+              <h2 class="fs-4 fw-bold mb-3">{{ 'myprofile.settings.title' | translate }}</h2>
+              <p class="text-capitalize"> {{ 'myprofile.settings.description' | translate }} </p>
+              <div class="d-flex  justify-content-center align-items-center">
+                <i class="fa-solid  me-2 fa-circle warningNote align-self-stretch mt-1 fs-6"></i>
+                <p class="text-note"> <span class="fw-bold">{{ 'myprofile.settings.noteTitle' | translate }} </span>  <span> {{ 'myprofile.settings.noteContent' | translate }}</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  }@else if (userRole === 'employee') {
+    <section class="">
+      <h1 class="fw-bold pb-4 text-capitalize text-center anmieWord"> {{ 'myprofile-emp.welcome' | translate }} <span class="anmieWord">{{userName}}</span> </h1>
+      <div class="container">
+        <h2 class="fw-medium pb-2 text-capitalize position-relative RegisteritionTxt">{{ 'myprofile-emp.dashboard' | translate }}</h2>
+        <div class="row my-4">
+          <div class="col-12 text-capitalize  col-md-6 col-lg-4 cursor-pointer">
+            <div class="inner innerProfile mb-4  mb-lg-0 shadow  rounded rounded-4 p-3 " routerLink="/browse-projects">
+              <i class="fa-solid fa-eye  w-100 fs-1 py-3 d-flex justify-content-center"></i>
+              <h2 class="fs-4 fw-bold mb-3" > {{ 'myprofile-emp.browse_projects' | translate }} </h2>
+              <p> {{ 'myprofile-emp.browse_projects_desc' | translate }} </p>
+              <div class="d-flex  justify-content-center align-items-center">
+                <i class="fa-solid  me-2 fa-circle warningNote align-self-stretch mt-1 fs-6"></i>
+                <p class="text-note">
+                  <span class="fw-bold">{{ 'myprofile-emp.note' | translate }}</span>
+                  <span>{{ 'myprofile-emp.browse_projects_desc' | translate }}</span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 text-capitalize col-md-6  col-lg-4 cursor-pointer" routerLink="/MsgsAndNotfi">
+            <div class="inner innerProfile mb-4 mb-lg-0  shadow rounded rounded-4 p-3">
+              <i class="fa-solid fa-envelope   w-100 fs-1 py-3 d-flex justify-content-center"></i>
+              <h2 class="fs-4 fw-bold mb-3"> {{ 'myprofile-emp.messages_notifications' | translate }} </h2>
+              <p> {{ 'myprofile-emp.settings_desc' | translate }} </p>
+              <div class="d-flex  justify-content-center align-items-center">
+                <i class="fa-solid  me-2 fa-circle warningNote align-self-stretch mt-1 fs-6"></i>
+                <p class="text-note">
+                  <span class="fw-bold">{{ 'myprofile-emp.important_notice' | translate }} </span>
+                  <span> {{ 'myprofile-emp.review_request_notice' | translate }} </span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 text-capitalize col-md-6  col-lg-4 cursor-pointer" routerLink="/settings">
+            <div class="inner innerProfile mb-4 mb-lg-0 shadow rounded  mt-0 rounded-4 p-3">
+              <i class="fa-solid fa-gear w-100 fs-1 py-3 d-flex justify-content-center"></i>
+              <h2 class="fs-4 fw-bold mb-3"> {{ 'myprofile-emp.settings' | translate }} </h2>
+              <p> {{ 'myprofile-emp.settings_desc' | translate }} </p>
+              <div class="d-flex justify-content-center align-items-center">
+                <i class="fa-solid me-2 fa-circle warningNote align-self-stretch mt-1 fs-6"></i>
+                <p class="text-note">
+                  <span class="fw-bold"> {{ 'myprofile-emp.important_notice' | translate }} </span>
+                  <span> {{ 'myprofile-emp.settings_note' | translate }} </span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  }
+}

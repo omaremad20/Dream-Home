@@ -1,0 +1,63 @@
+@if(isLoading === true) {
+  <div class="loader">
+    <div class="spinner"></div>
+  </div>
+}@else if (isLoading === false) {
+<section class="d-flex flex-column min-vh-100 container position-relative">
+  @if(userRole === 'customer') {
+    <h1 class="text-center py-3"> {{'main-chat.chatNowTwo' | translate }} </h1>
+  }
+  @else if (userRole === 'employee') {
+    <h1 class="text-center py-3">{{'main-chat.chatNow' | translate }}</h1>
+  }
+  <div class="flex-grow-1 overflow-auto px-3 mb-5 " style="padding-bottom: 100px;" >
+    @for(msg of messages; track $index) {
+      <div class="d-flex mb-2"
+           [class]="{'justify-content-end': msg.sender._id === senderId,
+                     'justify-content-start': msg.sender._id !== senderId}">
+        <p class="rounded px-3 py-1 d-flex flex-column justify-content-center "
+           [class]="{'sender-bg': msg.sender._id === senderId,
+                     'reciver-bg': msg.sender._id !== senderId}">
+          @if(msg.sender._id === senderId) {
+            <span class="text-decoration-underline"> {{'main-chat.You' | translate }} </span>
+          }@else if (msg.sender._id !== senderId) {
+            <span class="text-decoration-underline cursor-pointer" [routerLink]="['/employee-profile' , receiverId]" >{{workerName}}</span>
+          }
+          <span>{{ msg.message }}</span>
+          @if (currentLang === 'en') {
+            <small class="d-block text-end opacity-75">
+              @if (+msg.timestamp.split('').slice(11 , 13).join('') + 2 >= 12) {
+                {{+msg.timestamp.split('').slice(11 , 13).join('') + 2 - 12 }}:{{msg.timestamp.split('').slice(14 , 16).join('')}} PM
+              }@else if (+msg.timestamp.split('').slice(11 , 13).join('') + 2 < 12) {
+                {{+msg.timestamp.split('').slice(11 , 13).join('') + 2 }}:{{msg.timestamp.split('').slice(14 , 16).join('')}} AM
+              }
+            </small>
+          }@else if (currentLang === 'ar') {
+            <small class="d-block text-end opacity-75">
+              @if (+msg.timestamp.split('').slice(11 , 13).join('') + 2 >= 12) {
+                {{+msg.timestamp.split('').slice(11 , 13).join('') + 2 - 12 }}:{{msg.timestamp.split('').slice(14 , 16).join('')}} مساءا
+              }@else if (+msg.timestamp.split('').slice(11 , 13).join('') + 2 < 12) {
+                {{+msg.timestamp.split('').slice(11 , 13).join('') + 2 }}:{{msg.timestamp.split('').slice(14 , 16).join('')}} صباحا
+              }
+            </small>
+          }
+        </p>
+      </div>
+    }
+  </div>
+  <div class="position-fixed d-flex  justify-content-between align-items-center main-text-area bottom-0 start-0 end-0   py-4 shadow">
+    <div class="container d-flex align-items-center">
+      <div class="col-12">
+        <textarea [(ngModel)]="messageText"
+                  class="form-control  py-3"
+                  [placeholder]="'main-chat.placeHolder' | translate"
+                  rows="1"
+                  style="resize: none; overflow-y: scroll;"
+                  (input)="adjustTextarea($event)">
+        </textarea>
+      </div>
+    </div>
+    <i class="fa-solid fa-arrow-up me-3 cursor-pointer sendBtn" (click)="sendMessage()"></i>
+  </div>
+</section>
+}
